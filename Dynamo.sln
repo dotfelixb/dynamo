@@ -3,9 +3,45 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3EB2A9C8-806D-4FB7-B606-A18A185ACE2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{8730CC0F-9CAE-4D08-A6C9-DCAA87C51D37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{26F33F38-CE6B-4048-9EF2-60D4F285D544}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Server", "Dynamo.Server", "{36045528-32D5-4E54-B2E9-1F8AA2ACC216}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Server", "src\services\Dynamo.Server\Dynamo.Server.csproj", "{805F50F8-3CD9-4694-BE70-D869B840252A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Browser", "Dynamo.Browser", "{C676579A-EFC3-412D-B8F2-AB432CAC6138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Browser", "src\apps\Dynamo.Browser\Dynamo.Browser.csproj", "{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{805F50F8-3CD9-4694-BE70-D869B840252A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805F50F8-3CD9-4694-BE70-D869B840252A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805F50F8-3CD9-4694-BE70-D869B840252A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805F50F8-3CD9-4694-BE70-D869B840252A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8730CC0F-9CAE-4D08-A6C9-DCAA87C51D37} = {3EB2A9C8-806D-4FB7-B606-A18A185ACE2B}
+		{26F33F38-CE6B-4048-9EF2-60D4F285D544} = {3EB2A9C8-806D-4FB7-B606-A18A185ACE2B}
+		{36045528-32D5-4E54-B2E9-1F8AA2ACC216} = {8730CC0F-9CAE-4D08-A6C9-DCAA87C51D37}
+		{805F50F8-3CD9-4694-BE70-D869B840252A} = {36045528-32D5-4E54-B2E9-1F8AA2ACC216}
+		{C676579A-EFC3-412D-B8F2-AB432CAC6138} = {26F33F38-CE6B-4048-9EF2-60D4F285D544}
+		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD} = {C676579A-EFC3-412D-B8F2-AB432CAC6138}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D49C7175-2BD4-42DF-89E2-3115BFF89D54}
