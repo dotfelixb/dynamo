@@ -7,6 +7,7 @@ import {
   DefaultPalette,
   Link,
   IStackStyles,
+  fontFace,
 } from "@fluentui/react";
 import SideView from "../SideView";
 import ContentView from "../ContentView";
@@ -43,6 +44,20 @@ const contentStyles: IStackStyles = {
   },
 };
 
+const sideViewTitleStackStyle: IStackStyles = {
+  root: {
+    paddingTop: "12px",
+    paddingBottom: "3px",
+  },
+};
+
+const sideViewTitleStyle: IStackStyles = {
+  root: {
+    color: DefaultPalette.blackTranslucent40,
+    fontWeight: FontWeights.semibold,
+  },
+};
+
 export interface PageViewProps {
   leadingItems: JSX.Element;
   menuItems: JSX.Element;
@@ -72,9 +87,11 @@ const PageView: React.FC<PageViewProps> = ({
         {/* content */}
         <Stack horizontal styles={contentStyles}>
           <SideView>
-            <div>
-              <span>{sideViewTitle}</span>
-            </div>
+            <Stack styles={sideViewTitleStackStyle}>
+              <Text variant="small" styles={sideViewTitleStyle}>
+                {sideViewTitle}
+              </Text>
+            </Stack>
             {sideViewItems}
           </SideView>
           <ContentView>{children}</ContentView>

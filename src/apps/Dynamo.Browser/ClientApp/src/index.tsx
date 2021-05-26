@@ -1,9 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { mergeStyles, createTheme, ThemeProvider } from "@fluentui/react";
+import {
+  mergeStyles,
+  createTheme,
+  ThemeProvider,
+  initializeIcons,
+} from "@fluentui/react";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+initializeIcons();
 
 const dynamoTheme = createTheme({
   palette: {
