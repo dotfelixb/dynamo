@@ -1,18 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Layout } from "./Components";
-import { Dashboard } from "./Features";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route path="/" component={Dashboard} />
-        </Switch>
-      </Layout>
-    </Router>
+    <div className="font-sans">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-4 rounded">
+        Preview
+      </button>
+    </div>
   );
 };
 
