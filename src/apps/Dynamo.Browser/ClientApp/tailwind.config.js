@@ -6,12 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['nunito', ...defaultTheme.fontFamily.sans],
+        sans: ['Segoe UI', 'Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms"),],
 }
