@@ -1,51 +1,49 @@
 import React from "react";
-import {
-  Stack,
-  Text,
-  FontWeights,
-  IStackTokens,
-  DefaultPalette,
-  Link,
-  IStackStyles,
-} from "@fluentui/react";
+import { Link } from "react-router-dom";
 
-const defaultWidth = "1200px";
-
-const stackTokens: IStackTokens = { childrenGap: 8 };
-
-const menuBarStackStyles: IStackStyles = {
-  root: {
-    background: DefaultPalette.themeLighter,
-    lineHeight: "24px",
-    paddingTop: "8px",
-    paddingBottom: "8px",
-    borderBottom: "1px solid rgba(0, 0, 0, .1)",
-  },
-};
-
-const menuBarStyles: IStackStyles = {
-  root: { width: defaultWidth, margin: "0 auto" },
-};
-
-interface LayoutProps {}
+export interface LayoutProps {}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Stack verticalFill tokens={stackTokens}>
-      <Stack horizontal styles={menuBarStackStyles}>
-        {/* menubar */}
-        <Stack horizontal styles={menuBarStyles}>
-          <Stack grow>
-            <Text>Menu</Text>
-          </Stack>
-          <Stack grow horizontalAlign="end">
-            <Text>Search</Text>
-          </Stack>
-        </Stack>
-      </Stack>
-      {/* render layout child */}
+    <div className="box-border font-sans w-full text-sm">
+      {/* menu bar */}
+      <nav
+        id="header"
+        className="box-border flex flex-row xl:px-48 fixed inset-x-0 z-10 border-b border-gray-200  bg-indigo-50 py-3"
+      >
+        <div className="container flex flex-row items-center mx-auto">
+          <div className="w-1/2 flex ">
+            <Link to="/">
+              <span className="font-light cursor-pointer">Dynamo</span>
+            </Link>
+          </div>
+          <div className="w-1/2 flex items-center justify-end">
+            {/* searchbox */}
+            <div className="w-3/4 px-5 mx-5">
+              <input
+                type="search"
+                placeholder="Search for anything"
+                className="w-full text-xs text-gray-700 outline-none rounded px-3 py-1 border border-gray-300 hover:shadow focus:shadow focus:border-indigo-300 focus:ring-1 focus:ring-indigo-300"
+              />
+            </div>
+
+            {/* user */}
+            <div className="w-1/4 flex items-center cursor-pointer text-xs text-gray-700">
+              <div className="rounded w-8 text-center p-1 border border-gray-300 mr-1 ">
+                DU
+              </div>
+              <div className="">Demo User</div>
+            </div>
+
+            {/* notification */}
+            <div className="bg-red-400 w-8 text-xs text-white text-center rounded p-1 border border-red-500 cursor-default hover:bg-red-500">
+              8
+            </div>
+          </div>
+        </div>
+      </nav>
       {children}
-    </Stack>
+    </div>
   );
 };
 

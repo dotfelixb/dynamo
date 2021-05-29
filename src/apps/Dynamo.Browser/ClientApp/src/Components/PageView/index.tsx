@@ -1,85 +1,37 @@
 import React from "react";
-import {
-  Stack,
-  Text,
-  FontWeights,
-  IStackTokens,
-  DefaultPalette,
-  Link,
-  IStackStyles,
-} from "@fluentui/react";
-import SideView from "../SideView";
-import ContentView from "../ContentView";
 
-const defaultWidth = "1200px";
-
-const boldStyle = { root: { fontWeight: FontWeights.semibold } };
-const stackTokens: IStackTokens = { childrenGap: 8 };
-
-const toolbarStackStyles: IStackStyles = {
-  root: {
-    lineHeight: "24px",
-    paddingTop: "12px",
-    paddingBottom: "12px",
-    borderBottom: "1px solid rgba(0, 0, 0, .1)",
-  },
-};
-
-const contentStackStyles: IStackStyles = {
-  root: {},
-};
-
-const toolbarStyles: IStackStyles = {
-  root: {
-    width: defaultWidth,
-    margin: "0 auto",
-  },
-};
-
-const contentStyles: IStackStyles = {
-  root: {
-    width: defaultWidth,
-    margin: "0 auto",
-  },
-};
-
-export interface PageViewProps {
-  leadingItems: JSX.Element;
-  menuItems: JSX.Element;
-  sideViewItems: JSX.Element;
-  sideViewTitle: string;
+interface PageViewProps {
+  renderTitle?: JSX.Element;
+  renderToolbar?: JSX.Element;
+  renderSideView?: JSX.Element;
 }
 
 const PageView: React.FC<PageViewProps> = ({
-  leadingItems,
-  menuItems,
-  sideViewItems,
-  sideViewTitle,
+  renderTitle,
+  renderToolbar,
+  renderSideView,
   children,
 }) => {
+  const viewClass = "flex flex-row xl:px-48 ";
+
   return (
     <div>
-      <Stack styles={toolbarStackStyles}>
-        {/* toolbar */}
-        <Stack horizontal styles={toolbarStyles}>
-          <Stack grow>{leadingItems}</Stack>
-          <Stack grow horizontalAlign="end">
-            {menuItems}
-          </Stack>
-        </Stack>
-      </Stack>
-      <Stack styles={contentStackStyles}>
-        {/* content */}
-        <Stack horizontal styles={contentStyles}>
-          <SideView>
-            <div>
-              <span>{sideViewTitle}</span>
-            </div>
-            {sideViewItems}
-          </SideView>
-          <ContentView>{children}</ContentView>
-        </Stack>
-      </Stack>
+      <div
+        className={`${viewClass} bg-white py-5 pt-20 border-b border-gray-200`}
+      >
+        <div className="container flex flex-row mx-auto items-center h-5">
+          <div className="w-1/2 flex ">{renderTitle}</div>
+          <div className="w-1/2 flex justify-end">{renderToolbar}</div>
+        </div>
+      </div>
+      <div className={`${viewClass} bg-white`}>
+        <div className="container flex flex-row mx-auto">
+          <div className="hidden flex-col w-1/6 lg:flex xl:flex py-3 pr-3">
+            {renderSideView}
+          </div>
+          <div className="w-5/6 border-r border-b border-l">{children}</div>
+        </div>
+      </div>
     </div>
   );
 };
