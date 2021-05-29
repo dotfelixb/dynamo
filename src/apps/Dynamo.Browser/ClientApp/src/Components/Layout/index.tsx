@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export interface LayoutProps {}
 
@@ -12,11 +13,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="container flex flex-row items-center mx-auto">
           <div className="w-1/2 flex ">
-            <span className="font-light cursor-pointer">Dynamo</span>
+            <Link to="/">
+              <span className="font-light cursor-pointer">Dynamo</span>
+            </Link>
           </div>
           <div className="w-1/2 flex items-center justify-end">
             {/* searchbox */}
-            <div className=" w-3/4 px-5 mx-5">
+            <div className="w-3/4 px-5 mx-5">
               <input
                 type="search"
                 placeholder="Search for anything"
@@ -25,13 +28,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* user */}
-            <div></div>
+            <div className="w-1/4 flex items-center cursor-pointer text-xs text-gray-700">
+              <div className="rounded w-8 text-center p-1 border border-gray-300 mr-1 ">
+                DU
+              </div>
+              <div className="">Demo User</div>
+            </div>
 
             {/* notification */}
-            <div className="bg-red-500 px-2 rounded ">
-              <span className="text-white text-xs font-medium cursor-pointer">
-                7
-              </span>
+            <div className="bg-red-400 w-8 text-xs text-white text-center rounded p-1 border border-red-500 cursor-default hover:bg-red-500">
+              8
             </div>
           </div>
         </div>

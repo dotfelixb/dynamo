@@ -1,10 +1,17 @@
 import React from "react";
 
 interface PageViewProps {
+  renderTitle?: JSX.Element;
+  renderToolbar?: JSX.Element;
   renderSideView?: JSX.Element;
 }
 
-const PageView: React.FC<PageViewProps> = ({ renderSideView, children }) => {
+const PageView: React.FC<PageViewProps> = ({
+  renderTitle,
+  renderToolbar,
+  renderSideView,
+  children,
+}) => {
   const viewClass = "flex flex-row xl:px-48 ";
 
   return (
@@ -12,9 +19,9 @@ const PageView: React.FC<PageViewProps> = ({ renderSideView, children }) => {
       <div
         className={`${viewClass} bg-white py-5 pt-20 border-b border-gray-200`}
       >
-        <div className="container flex flex-row mx-auto">
-          <div className="w-1/2 flex">menu</div>
-          <div className="w-1/2 flex justify-end">search</div>
+        <div className="container flex flex-row mx-auto items-center h-5">
+          <div className="w-1/2 flex ">{renderTitle}</div>
+          <div className="w-1/2 flex justify-end">{renderToolbar}</div>
         </div>
       </div>
       <div className={`${viewClass} bg-white`}>

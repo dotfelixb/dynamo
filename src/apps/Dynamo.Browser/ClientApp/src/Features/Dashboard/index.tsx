@@ -8,6 +8,12 @@ import {
   CollectionIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
+import { Route, Switch } from "react-router-dom";
+import HRBoard from "./HRBoard";
+import CRMBoard from "./CRMBoard";
+import PayrollBoard from "./PayrollBoard";
+import SupportBoard from "./SupportBoard";
+import SettingsBoard from "./SettingsBoard";
 
 interface DashboardProps {}
 
@@ -45,7 +51,11 @@ const sideMenus: SideMenuProps[] = [
   },
 ];
 
-const Dashboard: React.FC<DashboardProps> = () => {
+const Dashboard: React.FC<DashboardProps> = ({ children }) => {
+  const renderTitle = <div></div>;
+
+  const renderToolbar = <div></div>;
+
   const renderSideView = (
     <div>
       <div className="pb-3">
@@ -66,7 +76,21 @@ const Dashboard: React.FC<DashboardProps> = () => {
     </div>
   );
 
-  return <PageView renderSideView={renderSideView}></PageView>;
+  return (
+    <PageView
+      renderTitle={renderTitle}
+      renderToolbar={renderToolbar}
+      renderSideView={renderSideView}
+    >
+      <Switch>
+        <Route path="/d/crm" component={CRMBoard} />
+        <Route path="/d/hr" component={HRBoard} />
+        <Route path="/d/payroll" component={PayrollBoard} />
+        <Route path="/d/support" component={SupportBoard} />
+        <Route path="/d/settings" component={SettingsBoard} />
+      </Switch>
+    </PageView>
+  );
 };
 
 export default Dashboard;
