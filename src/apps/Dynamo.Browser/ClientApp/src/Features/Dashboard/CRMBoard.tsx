@@ -17,7 +17,7 @@ const CRMBoard: React.FC<CRMBoardProps> = () => {
           data="4 active"
         />
         <ShortcutLink to="/app/leads" title="Leads" data="4 active" />
-        <ShortcutLink to="/app/employees" title="Sales Invoices" />
+        <ShortcutLink to="/app/employee" title="Sales Invoices" />
         <ShortcutLink
           to="/app/employee"
           title="Job Applicant"

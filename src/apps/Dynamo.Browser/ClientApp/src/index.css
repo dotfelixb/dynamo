@@ -5,3 +5,23 @@
 svg {
   display: inline;
 }
+
+.pageTitle {
+  @apply text-xl font-semibold text-gray-600;
+}
+
+.btn-primary {
+  @apply text-base rounded px-3 py-1 focus:outline-none focus:ring-2 bg-indigo-500 text-white hover:bg-indigo-600 focus:ring-indigo-800;
+}
+
+.btn-default {
+  @apply text-base rounded px-3 py-1 focus:outline-none focus:ring-2 bg-gray-200 text-gray-600 hover:bg-gray-300 hover:text-gray-900 focus:ring-gray-400;
+}
+
+.btn-primary-disabled {
+  @apply bg-indigo-400 text-gray-300 cursor-not-allowed;
+}
+
+.btn-default-disabled {
+  @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+}
