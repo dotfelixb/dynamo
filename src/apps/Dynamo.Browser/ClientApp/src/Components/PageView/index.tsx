@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface PageViewProps {
+  pageTitle?: string;
   renderTitle?: JSX.Element;
   renderToolbar?: JSX.Element;
   renderSideView?: JSX.Element;
 }
 
 const PageView: React.FC<PageViewProps> = ({
+  pageTitle = "Dynamo App",
   renderTitle,
   renderToolbar,
   renderSideView,
   children,
 }) => {
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
   const viewClass = "flex flex-row xl:px-48 ";
 
   return (
