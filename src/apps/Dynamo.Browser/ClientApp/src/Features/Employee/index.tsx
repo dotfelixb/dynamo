@@ -1,7 +1,5 @@
-import { PlusIcon } from "@heroicons/react/outline";
 import React from "react";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
-import { LinkButton, PageView } from "../../Components";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import ListEmployee from "./List";
 import NewEmployee from "./New";
 

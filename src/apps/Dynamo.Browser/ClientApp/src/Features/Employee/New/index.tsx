@@ -1,76 +1,16 @@
-import React from "react";
-import { DefaultButton, LinkButton, PageView } from "../../../Components";
-
-interface IOptionItem {
-  value: string;
-  label: string;
-}
-
-interface IFormField {
-  name: string;
-  placeholder: string;
-  type: string;
-  options?: IOptionItem[];
-}
+import React, { useState } from "react";
+import {
+  DefaultButton,
+  PageView,
+  SelectInput,
+  TextInput,
+} from "../../../Components";
 
 interface NewEmployeeProps {}
 
-const basicFormFields: IFormField[] = [
-  {
-    name: "first_name",
-    placeholder: "First Name",
-    type: "text",
-  },
-  {
-    name: "middle_name",
-    placeholder: "Middle Name",
-    type: "text",
-  },
-  { name: "last_name", placeholder: "Last Name", type: "text" },
-  {
-    name: "gender",
-    placeholder: "Gender",
-    type: "select",
-    options: [
-      { value: "", label: "" },
-      { value: "male", label: "Male" },
-      { value: "female", label: "Female" },
-    ],
-  },
-  { name: "comment", placeholder: "Comment", type: "area" },
-  { name: "employment_type", placeholder: "Employment Type", type: "text" },
-  { name: "date_of_birth", placeholder: "Date of Birth", type: "date" },
-
-  { name: "date_of_joining", placeholder: "Date of Joining", type: "date" },
-];
-
-interface ILabelField {
-  name: string;
-  placeholder?: string;
-}
-
-const LabelField: React.FC<ILabelField> = ({ name, placeholder }) => (
-  <label className="block mb-2 text-gray-600" htmlFor={name}>
-    {placeholder}
-  </label>
-);
-
-interface IInputField {
-  type: "text" | "select" | "date";
-  name: string;
-  placeholder?: string;
-}
-
-const InputField: React.FC<IInputField> = ({ type, name, placeholder }) => (
-  <input
-    className="block w-full text-sm px-3 py-1 rounded bg-gray-50 border-gray-300 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-300"
-    type={type}
-    name={name}
-    placeholder={placeholder}
-  />
-);
-
 const NewEmployee: React.FC<NewEmployeeProps> = () => {
+  const [selectedTitle, setSelectedTitle] = useState("");
+
   const renderTitle = (
     <div>
       <span className="pageTitle">New Employee</span>
@@ -101,8 +41,33 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
             Basic Information
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
-            <DefaultButton text="Default" />
-            <DefaultButton text="Primary" buttonType="primary" />
+            <TextInput
+              name="first_name"
+              placeholder="First Name"
+              error={true}
+            />
+            <SelectInput name="title" label="Title" value={selectedTitle}>
+              <SelectInput.Option
+                text="Mr."
+                onClick={() => setSelectedTitle("Mr.")}
+              />
+              <SelectInput.Option
+                text="Mrs."
+                onClick={() => setSelectedTitle("Mrs.")}
+              />
+              <SelectInput.Option
+                text="Miss."
+                onClick={() => setSelectedTitle("Miss.")}
+              />
+              <SelectInput.Option
+                text="Dr."
+                onClick={() => setSelectedTitle("Dr.")}
+              />
+              <SelectInput.Option
+                text="Prof."
+                onClick={() => setSelectedTitle("Prof.")}
+              />
+            </SelectInput>
           </div>
         </div>
         <div className="p-5">
@@ -110,15 +75,11 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
             Dynamo User
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
-            <div>
-              <LabelField name="user" placeholder="User Id" />
-              <input
-                className="block w-full text-sm px-3 py-1 rounded bg-gray-50 border-gray-300 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-300"
-                type="text"
-                name="user"
-                placeholder="Create System User"
-              />
-            </div>
+            <TextInput
+              name="user"
+              label="User Id"
+              placeholder="Create Dynamo user"
+            />
           </div>
         </div>
       </form>
