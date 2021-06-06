@@ -5,7 +5,7 @@ import {
   TemplateIcon,
 } from "@heroicons/react/outline";
 import React from "react";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import { LinkButton, MenuButton, PageView } from "../../../Components";
 
 export interface ListEmployeeProps {}

@@ -2,19 +2,21 @@ import React from "react";
 
 interface ITextInputProps {
   name: string;
+  label?: string;
   placeholder?: string;
   error?: boolean;
 }
 
 const TextInput: React.FC<ITextInputProps> = ({
   name,
+  label,
   placeholder = "",
   error = false,
 }) => {
   return (
     <div className="grid space-y-2">
       <label htmlFor={name} className="text-gray-600 text-xs">
-        {placeholder}
+        {label ?? placeholder}
       </label>
       <input
         type="text"
