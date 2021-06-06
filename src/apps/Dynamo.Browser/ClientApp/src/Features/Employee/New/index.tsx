@@ -1,5 +1,11 @@
 import React from "react";
-import { DefaultButton, LinkButton, PageView } from "../../../Components";
+import {
+  DefaultButton,
+  LinkButton,
+  PageView,
+  SelectInput,
+  TextInput,
+} from "../../../Components";
 
 interface IOptionItem {
   value: string;
@@ -101,8 +107,12 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
             Basic Information
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
-            <DefaultButton text="Default" />
-            <DefaultButton text="Primary" buttonType="primary" />
+            <TextInput
+              name="first_name"
+              placeholder="First Name"
+              error={true}
+            />
+            <SelectInput name="title" placeholder="Title" />
           </div>
         </div>
         <div className="p-5">
@@ -113,7 +123,7 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
             <div>
               <LabelField name="user" placeholder="User Id" />
               <input
-                className="block w-full text-sm px-3 py-1 rounded bg-gray-50 border-gray-300 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-300"
+                className="input-default"
                 type="text"
                 name="user"
                 placeholder="Create System User"

@@ -25,3 +25,15 @@ svg {
 .btn-default-disabled {
   @apply bg-gray-200 text-gray-400 cursor-not-allowed;
 }
+
+.input-default {
+  @apply block w-full text-sm p-2 rounded bg-gray-50 focus:ring-2;
+}
+
+.input-primary {
+  @apply border-gray-300 focus:border-indigo-300 focus:ring-indigo-300;
+}
+
+.input-error {
+  @apply border-red-400 focus:border-red-300 focus:ring-red-300;
+}
