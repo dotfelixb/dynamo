@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  DateTimeInput,
   DefaultButton,
   PageView,
   SelectInput,
@@ -10,6 +11,9 @@ interface NewEmployeeProps {}
 
 const NewEmployee: React.FC<NewEmployeeProps> = () => {
   const [selectedTitle, setSelectedTitle] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [selectedEmploymentType, setSelectedEmploymentType] = useState("");
 
   const renderTitle = (
     <div>
@@ -41,11 +45,35 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
             Basic Information
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
-            <TextInput
-              name="first_name"
-              placeholder="First Name"
+            <TextInput name="first_name" label="First Name" error={true} />
+            <SelectInput name="status" label="Status" value={selectedStatus}>
+              <SelectInput.Option
+                text="Active"
+                onClick={() => setSelectedStatus("Active")}
+              />
+              <SelectInput.Option
+                text="Left"
+                onClick={() => setSelectedStatus("Left")}
+              />
+            </SelectInput>
+            <TextInput name="middle_name" label="Middle Name" />
+            <SelectInput
+              name="gender"
+              label="Gender"
               error={true}
-            />
+              value={selectedGender}
+            >
+              <SelectInput.Option
+                text="Male"
+                onClick={() => setSelectedGender("Male")}
+              />
+              <SelectInput.Option
+                text="Female"
+                onClick={() => setSelectedGender("Female")}
+              />
+            </SelectInput>
+            <TextInput name="last_name" label="Last Name" error={true} />
+            <DateTimeInput />
             <SelectInput name="title" label="Title" value={selectedTitle}>
               <SelectInput.Option
                 text="Mr."
@@ -55,17 +83,20 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
                 text="Mrs."
                 onClick={() => setSelectedTitle("Mrs.")}
               />
+            </SelectInput>
+            <DateTimeInput />
+            <SelectInput
+              name="employment_type"
+              label="Employment Type"
+              value={selectedEmploymentType}
+            >
               <SelectInput.Option
-                text="Miss."
-                onClick={() => setSelectedTitle("Miss.")}
+                text="Part Time"
+                onClick={() => setSelectedEmploymentType("Part Time")}
               />
               <SelectInput.Option
-                text="Dr."
-                onClick={() => setSelectedTitle("Dr.")}
-              />
-              <SelectInput.Option
-                text="Prof."
-                onClick={() => setSelectedTitle("Prof.")}
+                text="Full Time"
+                onClick={() => setSelectedEmploymentType("Full Time")}
               />
             </SelectInput>
           </div>
