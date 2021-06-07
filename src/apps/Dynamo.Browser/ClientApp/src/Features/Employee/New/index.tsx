@@ -73,7 +73,7 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
               />
             </SelectInput>
             <TextInput name="last_name" label="Last Name" error={true} />
-            <DateTimeInput />
+            <DateTimeInput name="date_of_birth" label="Date of Birth" />
             <SelectInput name="title" label="Title" value={selectedTitle}>
               <SelectInput.Option
                 text="Mr."
@@ -84,7 +84,7 @@ const NewEmployee: React.FC<NewEmployeeProps> = () => {
                 onClick={() => setSelectedTitle("Mrs.")}
               />
             </SelectInput>
-            <DateTimeInput />
+            <DateTimeInput name="date_of_joining" label="Date of Joining" />
             <SelectInput
               name="employment_type"
               label="Employment Type"

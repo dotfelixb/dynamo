@@ -37,3 +37,19 @@ svg {
 .input-error {
   @apply border-red-400 focus:border-red-300 focus:ring-red-300;
 }
+
+.react-calendar__navigation {
+  @apply text-sm;
+}
+
+.react-calendar__navigation__arrow {
+  @apply font-bold text-lg mx-2;
+}
+
+.react-calendar__tile {
+  @apply bg-white py-4 rounded-full focus:outline-none focus:ring-0;
+}
+
+.react-calendar__tile--active {
+  @apply bg-indigo-400;
+}

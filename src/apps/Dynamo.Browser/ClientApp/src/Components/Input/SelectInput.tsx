@@ -38,11 +38,6 @@ const SelectInput: React.FC<ISelectInputProps> & ISelectInputSubProps = ({
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLInputElement>(null);
 
-  const closeMenu = () => {
-    setIsOpen(false);
-    ref?.current?.focus();
-  };
-
   return (
     <div
       className="relative grid space-y-2"
@@ -61,6 +56,7 @@ const SelectInput: React.FC<ISelectInputProps> & ISelectInputSubProps = ({
         placeholder={placeholder}
         ref={ref}
         onChange={() => {}}
+        readOnly
         className={`input-default ${error ? "input-error" : "input-primary"}`}
       />
       {isOpen && (
@@ -69,14 +65,14 @@ const SelectInput: React.FC<ISelectInputProps> & ISelectInputSubProps = ({
             setIsOpen(false);
             ref?.current?.focus();
           }}
-          className="fixed inset-0 bg-gray-50 opacity-5 w-full h-full cursor-default"
+          className="fixed inset-0 bg-gray-50 opacity-5 z-40 w-full h-full cursor-default"
           tabIndex={-1}
-        ></button>
+        />
       )}
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } w-full absolute inset-x-0 top-14 max-h-80 z-10 overflow-y-scroll bg-white p-1 rounded shadow`}
+        } w-full absolute inset-x-0 top-14 max-h-80 z-40 overflow-y-scroll bg-white p-1 rounded shadow-lg`}
       >
         {children}
       </div>
