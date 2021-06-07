@@ -81,7 +81,7 @@ const MenuButton: React.FC<IMenuButtonProps> & IMenuButtonSubProps = ({
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } absolute left-0 bg-white mt-2 p-1 rounded shadow`}
+        } absolute left-0 bg-white mt-2 p-1 rounded shadow-lg`}
       >
         {children}
       </div>

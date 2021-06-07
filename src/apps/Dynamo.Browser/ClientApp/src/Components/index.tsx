@@ -6,3 +6,4 @@ export { default as DefaultButton } from "./Button/DefaultButton";
 export { default as MenuButton } from "./Button/MenuButton";
 export { default as TextInput } from "./Input/TextInput";
 export { default as SelectInput } from "./Input/SelectInput";
+export { default as DateTimeInput } from "./Input/DateTimeInput";
