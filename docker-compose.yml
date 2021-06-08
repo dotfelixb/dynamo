@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dynamo.browser:
+    image: ${DOCKER_REGISTRY-}dynamobrowser
+    build:
+      context: .
+      dockerfile: src/apps/Dynamo.Browser/Dockerfile

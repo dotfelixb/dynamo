@@ -64,7 +64,7 @@ const DateTimeInput: React.FC<IDateTimeInputProps> = ({
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } w-full absolute inset-x-0 top-14 max-h-80 z-40 overflow-y-scroll bg-white p-3 rounded shadow-lg`}
+        } w-full absolute inset-x-0 top-14 max-h-96 z-40 overflow-y-auto bg-white p-3 rounded shadow-xl`}
       >
         <Calendar
           calendarType="US"
@@ -73,7 +73,7 @@ const DateTimeInput: React.FC<IDateTimeInputProps> = ({
             setSelectedDate(d);
             setIsOpen(false);
           }}
-          className="text-gray-700 px-5 py-3"
+          className="text-gray-700 px-7 py-3"
           tileClassName=" hover:bg-gray-100"
           prev2Label={<ChevronDoubleLeftIcon className="w-4 h-4" />}
           prevLabel={<ChevronLeftIcon className="w-4 h-4" />}

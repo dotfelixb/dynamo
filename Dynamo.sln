@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{26F33F38-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Server", "Dynamo.Server", "{36045528-32D5-4E54-B2E9-1F8AA2ACC216}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Server", "src\services\Dynamo.Server\Dynamo.Server.csproj", "{805F50F8-3CD9-4694-BE70-D869B840252A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamo.Server", "src\services\Dynamo.Server\Dynamo.Server.csproj", "{805F50F8-3CD9-4694-BE70-D869B840252A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Browser", "Dynamo.Browser", "{C676579A-EFC3-412D-B8F2-AB432CAC6138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Browser", "src\apps\Dynamo.Browser\Dynamo.Browser.csproj", "{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamo.Browser", "src\apps\Dynamo.Browser\Dynamo.Browser.csproj", "{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8FB5915A-BFF0-4A2B-A376-0C4F31E47BD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE04F997-6A7F-41FE-8DB7-ED0ACF4AF7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB5915A-BFF0-4A2B-A376-0C4F31E47BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB5915A-BFF0-4A2B-A376-0C4F31E47BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB5915A-BFF0-4A2B-A376-0C4F31E47BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB5915A-BFF0-4A2B-A376-0C4F31E47BD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

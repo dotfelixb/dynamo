@@ -72,7 +72,7 @@ const SelectInput: React.FC<ISelectInputProps> & ISelectInputSubProps = ({
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } w-full absolute inset-x-0 top-14 max-h-80 z-40 overflow-y-scroll bg-white p-1 rounded shadow-lg`}
+        } w-full absolute inset-x-0 top-14 max-h-96 z-40 overflow-y-auto bg-white p-1 rounded shadow-xl`}
       >
         {children}
       </div>

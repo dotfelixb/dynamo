@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Dynamo.Browser
 {
@@ -63,8 +64,10 @@ namespace Dynamo.Browser
 
                 if (env.IsDevelopment())
                 {
+                spa.Options.StartupTimeout = TimeSpan.FromSeconds(240);
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
+
             });
         }
     }

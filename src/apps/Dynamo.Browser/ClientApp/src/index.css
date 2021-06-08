@@ -47,7 +47,7 @@ svg {
 }
 
 .react-calendar__tile {
-  @apply bg-white py-4 rounded-full focus:outline-none focus:ring-0;
+  @apply bg-white p-3 rounded-xl focus:outline-none focus:ring-0;
 }
 
 .react-calendar__tile--active {
