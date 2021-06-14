@@ -1,6 +1,7 @@
+using Dynamo.Features;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,13 +22,23 @@ namespace Dynamo.Browser
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
+            });
+
+            services.AddGrpcClient<Contracts.Employee.EmployeeClient>(srv =>
+            {
+                srv.Address = new Uri("https://localhost:6001/");
+            });
+
+            services.AddMediatR(assemblies: new[]
+            { 
+                typeof(Startup).Assembly,
+                typeof( DynamoFeatures).Assembly
             });
         }
 
@@ -64,10 +75,9 @@ namespace Dynamo.Browser
 
                 if (env.IsDevelopment())
                 {
-                spa.Options.StartupTimeout = TimeSpan.FromSeconds(240);
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(240);
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
-
             });
         }
     }

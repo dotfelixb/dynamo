@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Dynamo.Contracts";
+
+package employee;
+
+service Employee {
+	rpc CreateEmployee (CreateEmployeeRequest) returns (EmployeeCreatedReply);
+}
+
+message CreateEmployeeRequest {
+	string first_name = 1;
+}
+
+message EmployeeCreatedReply {
+	string id = 1;
+}
