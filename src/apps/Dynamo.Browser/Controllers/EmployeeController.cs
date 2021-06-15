@@ -15,10 +15,14 @@ namespace Dynamo.Browser.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("employee.create", Name = nameof(CreateEmployeeAsync))]
-        public async Task<IActionResult> CreateEmployeeAsync()
+        [HttpPost("employee.create", Name = nameof(CreateEmployee))]
+        public async Task<IActionResult> CreateEmployee([FromBody] CreateEmployeeCommand command)
         {
-            var command = new CreateEmployeeCommand { FirstName = "Test" };
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest();
+            //}
+
             var rst = await _mediator.Send(command);
 
             return Ok(rst);

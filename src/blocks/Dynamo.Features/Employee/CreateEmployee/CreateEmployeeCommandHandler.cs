@@ -8,7 +8,7 @@ namespace Dynamo.Features.Employee.CreateEmployee
 {
     internal class CreateEmployeeCommandHandler :
         IRequestHandler<CreateEmployeeCommand,
-            Result<EmployeeCreatedResult>>
+            Result<CreateEmployeeResult>>
     {
         private readonly Contracts.Employee.EmployeeClient _client;
 
@@ -17,7 +17,9 @@ namespace Dynamo.Features.Employee.CreateEmployee
             _client = client;
         }
 
-        public async Task<Result<EmployeeCreatedResult>> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
+        public async Task<Result<CreateEmployeeResult>> Handle(
+            CreateEmployeeCommand request, 
+            CancellationToken cancellationToken)
         {
             try
             {
@@ -28,7 +30,7 @@ namespace Dynamo.Features.Employee.CreateEmployee
                 var rst = await _client
                         .CreateEmployeeAsync(createable, cancellationToken: cancellationToken);
 
-                return Result.Ok(new EmployeeCreatedResult { Id = rst.Id });
+                return Result.Ok(new CreateEmployeeResult { Id = rst.Id });
             }
             catch (Exception ex)
             {
