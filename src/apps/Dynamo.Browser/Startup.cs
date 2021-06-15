@@ -1,3 +1,4 @@
+using Dynamo.Browser.Crosscutting.Validation;
 using Dynamo.Features;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -23,9 +24,11 @@ namespace Dynamo.Browser
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddControllersWithViews()
-                .AddFluentValidation(v=> v.RegisterValidatorsFromAssemblyContaining<DynamoFeatures>());
+            services.AddControllersWithViews(option =>
+            {
+                option.Filters.Add<ValidationFilter>();
+            })
+            .AddFluentValidation(v => v.RegisterValidatorsFromAssemblyContaining<DynamoFeatures>());
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
