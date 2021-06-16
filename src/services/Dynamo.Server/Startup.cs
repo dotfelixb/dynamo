@@ -28,7 +28,7 @@ namespace Dynamo.Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<CreateEmployeeService>();
+                endpoints.MapGrpcService<EmployeeService>();
 
                 endpoints.MapGet("/", async context =>
                 {

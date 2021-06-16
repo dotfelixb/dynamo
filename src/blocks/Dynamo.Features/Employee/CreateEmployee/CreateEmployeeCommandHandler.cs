@@ -18,7 +18,7 @@ namespace Dynamo.Features.Employee.CreateEmployee
         }
 
         public async Task<Result<CreateEmployeeResult>> Handle(
-            CreateEmployeeCommand request, 
+            CreateEmployeeCommand request,
             CancellationToken cancellationToken)
         {
             try
@@ -30,7 +30,12 @@ namespace Dynamo.Features.Employee.CreateEmployee
                 var rst = await _client
                         .CreateEmployeeAsync(createable, cancellationToken: cancellationToken);
 
-                return Result.Ok(new CreateEmployeeResult { Id = rst.Id });
+                var createdEmployee = new CreateEmployeeResult
+                {
+                    Id = rst.Id
+                };
+
+                return Result.Ok(createdEmployee);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using FluentValidation;
 using MediatR;
 using System;
 
@@ -13,22 +12,8 @@ namespace Dynamo.Features.Employee.CreateEmployee
         public string Title { get; set; }
         public string Gender { get; set; }
         public DateTimeOffset DateOfBirth { get; set; }
-        public DateTimeOffset DateOfJoining { get; set; }
-        public string Status { get; set; }
-        public string EmploymentType { get; set; }
-    }
-
-    public class CreateEmployeeValidator : AbstractValidator<CreateEmployeeCommand>
-    {
-        public CreateEmployeeValidator()
-        {
-            RuleFor(r => r.FirstName).NotEmpty().MaximumLength(50);
-
-            RuleFor(r => r.LastName).NotEmpty().MaximumLength(50);
-
-            RuleFor(r => r.Gender).NotEmpty();
-
-            RuleFor(r => r.DateOfBirth).NotEqual(DateTimeOffset.MinValue);
-        }
+        public DateTimeOffset DateOfJoining { get; set; } = DateTimeOffset.UtcNow;
+        public string Status { get; set; } = "Active";
+        public string EmploymentType { get; set; } = "Full-time";
     }
 }

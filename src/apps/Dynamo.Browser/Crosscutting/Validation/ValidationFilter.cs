@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dynamo.Browser.Crosscutting.Validation
@@ -12,7 +14,15 @@ namespace Dynamo.Browser.Crosscutting.Validation
         {
             if (!context.ModelState.IsValid)
             {
-                context.Result = new BadRequestObjectResult(context.ModelState);
+                var errorReasons = context.ModelState
+                    .SelectMany(m=> m.Value.Errors)
+                    .Select(e=> e.ErrorMessage);
+
+                var result = Result
+                    .Fail(errorMessage: "Invalid Model")
+                    .WithErrors(errorReasons);
+
+                context.Result = new BadRequestObjectResult(result); 
                 return;
             }
 
