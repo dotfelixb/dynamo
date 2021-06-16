@@ -1,5 +1,6 @@
 ﻿syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
 option csharp_namespace = "Dynamo.Contracts";
 
 package employee;
@@ -7,21 +8,66 @@ package employee;
 service Employee {
 	rpc CreateEmployee (CreateEmployeeRequest) returns (EmployeeCreatedReply);
 	rpc GetEmployee (GetEmployeeRequest) returns (EmployeeReply);
+	rpc CreateEmployeeContact (CreateEmployeeContactRequest) returns (EmployeeContactCreatedReply);
 }
 
 message CreateEmployeeRequest {
 	string first_name = 1;
+	string last_name = 2;
+	string middle_name = 3;
+	string gender = 4;
+	google.protobuf.Timestamp date_of_birth = 5;
+	string title = 6;
+	string status = 7;
+	string employment_type = 8;
+	google.protobuf.Timestamp date_of_joining = 9;
 }
 
 message GetEmployeeRequest {
-	string id = 1;
+	string employee_id = 1;
+}
+
+message CreateEmployeeContactRequest {
+	string employee_id = 1;
+	string name = 2;
+	string mobile = 3;
+	string phone = 4;
+	string address = 5;
+	string company_email = 6;
+	string personal_email = 7;
+	string contact_type = 8;
+	string relation = 9;
+	bool send_sms = 10;
+	bool send_email = 11; 
 }
 
 message EmployeeCreatedReply {
-	string id = 1;
+	string employee_id = 1;
 }
 
 message EmployeeReply {
 	string id = 1;
 	string first_name = 2;
+	string last_name = 3;
+	string middle_name = 4;
+	string gender = 5;
+	google.protobuf.Timestamp date_of_birth = 6;
+	string title = 7;
+	string status = 8;
+	string employment_type = 9;
+	google.protobuf.Timestamp date_of_joining = 10;
+}
+
+message EmployeeContactCreatedReply {
+	string id = 1;
+	string name = 2;
+	string mobile = 3;
+	string phone = 4;
+	string address = 5;
+	string company_email = 6;
+	string personal_email = 7;
+	string contact_type = 8;
+	string relation = 9;
+	bool send_sms = 10;
+	bool send_email = 11; 
 }

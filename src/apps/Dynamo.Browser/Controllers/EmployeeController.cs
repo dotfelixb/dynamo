@@ -29,6 +29,19 @@ namespace Dynamo.Browser.Controllers
             return Ok(rst);
         }
 
+         [HttpGet("employee.list", Name = nameof(ListEmployee))]
+        public async Task<IActionResult> ListEmployee([FromQuery] ListEmployeeCommand command)
+        {
+            var rst = await _mediator.Send(command);
+
+            if (rst.IsFailed)
+            {
+                return BadRequest(rst);
+            }
+
+            return Ok(rst);
+        }
+
         [HttpPost("employee.create", Name = nameof(CreateEmployee))]
         public async Task<IActionResult> CreateEmployee(
             [FromBody] CreateEmployeeCommand command)

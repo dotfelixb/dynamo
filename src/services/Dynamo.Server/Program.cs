@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
 
 namespace Dynamo.Server
@@ -16,12 +17,12 @@ namespace Dynamo.Server
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.ConfigureKestrel(options =>
-                    //{
-                    //    // Setup a HTTP/2 endpoint without TLS.
-                    //    options.ListenLocalhost(5006, o => o.Protocols =
-                    //        HttpProtocols.Http2);
-                    //});
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        // Setup a HTTP/2 endpoint without TLS.
+                        options.ListenLocalhost(6001, o => o.Protocols =
+                            HttpProtocols.Http2);
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }
