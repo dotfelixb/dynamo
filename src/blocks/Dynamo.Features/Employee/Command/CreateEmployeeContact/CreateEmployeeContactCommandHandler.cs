@@ -8,7 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Dynamo.Features.Employee.CreateEmployeeContact
+namespace Dynamo.Features.Employee.Command.CreateEmployeeContact
 {
     public class CreateEmployeeContactCommand : 
         CreateEmployeeContactModel,

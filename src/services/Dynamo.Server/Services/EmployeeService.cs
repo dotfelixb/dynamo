@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Dynamo.Contracts;
-using Dynamo.Models.EmployeeEventModel;
-using Dynamo.Server.GrainImpl;
+using Dynamo.Features.Employee.Event.CreateEmployee;
+using Dynamo.Features.Employee.Event.CreateEmployeeContact;
 using Grpc.Core;
 using MassTransit;
-using Orleans;
+using MediatR;
 using System;
 using System.Threading.Tasks;
 
@@ -12,15 +12,15 @@ namespace Dynamo.Server.EmployeeServices
 {
     public class EmployeeService : Employee.EmployeeBase
     {
-        private readonly IClusterClient _clusterClient;
+        private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
         public EmployeeService(
-            IClusterClient clusterClient, 
+            IMediator mediator,
             IMapper mapper)
         {
-            _clusterClient = clusterClient;
             _mapper = mapper;
+            _mediator = mediator;
         }
 
         public override async Task<EmployeeCreatedReply> CreateEmployee(
@@ -30,16 +30,15 @@ namespace Dynamo.Server.EmployeeServices
             try
             {
                 var createable = _mapper
-                  .Map<CreateEmployeeRequest, CreateEmployeeEventModel>(request);
+                  .Map<CreateEmployeeRequest, CreateEmployeeEvent>(request);
 
                 createable.Id = NewId.NextGuid().ToString();
 
-                var grain = _clusterClient.GetGrain<IEmployeeGrain>(createable.Id);
-                var rst = await grain.CreateEmployee(createable);
+                var rst = await _mediator.Send(createable);
 
-                if (!rst)
+                if (rst.IsFailed)
                 {
-                    throw new InvalidOperationException("Not able to create new employee");
+                    throw new InvalidOperationException("Not able to create employee");
                 }
 
                 return new EmployeeCreatedReply
@@ -47,7 +46,7 @@ namespace Dynamo.Server.EmployeeServices
                     EmployeeId = createable.Id
                 };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -71,20 +70,18 @@ namespace Dynamo.Server.EmployeeServices
         {
             try
             {
-                var createable = _mapper
-                .Map<CreateEmployeeContactRequest, CreateEmployeeContactEventModel>(request);
+                var createable = _mapper.Map<CreateEmployeeContactRequest, CreateEmployeeContactEvent>(request);
 
-                var grain = _clusterClient.GetGrain<IEmployeeGrain>(createable.EmployeeId);
-                var rst = await grain.CreateEmployeeContact(createable);
+                var rst = await _mediator.Send(createable);
 
-                if (!rst)
+                if (rst.IsFailed)
                 {
                     throw new InvalidOperationException("Not able to create employee contact");
                 }
 
                 return new EmployeeContactCreatedReply { };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

@@ -1,7 +1,7 @@
-﻿using Dynamo.Features.Employee.CreateEmployee;
-using Dynamo.Features.Employee.CreateEmployeeContact;
-using Dynamo.Features.Employee.GetEmployee;
-using Dynamo.Features.Employee.ListEmployee;
+﻿using Dynamo.Features.Employee.Command.CreateEmployee;
+using Dynamo.Features.Employee.Command.CreateEmployeeContact;
+using Dynamo.Features.Employee.Command.GetEmployee;
+using Dynamo.Features.Employee.Command.ListEmployee;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

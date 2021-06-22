@@ -12,15 +12,16 @@ service Employee {
 }
 
 message CreateEmployeeRequest {
-	string first_name = 1;
-	string last_name = 2;
-	string middle_name = 3;
-	string gender = 4;
-	google.protobuf.Timestamp date_of_birth = 5;
-	string title = 6;
-	string status = 7;
-	string employment_type = 8;
-	google.protobuf.Timestamp date_of_joining = 9;
+	string code = 1;
+	string first_name = 2;
+	string last_name = 3;
+	string middle_name = 4;
+	string gender = 5;
+	google.protobuf.Timestamp date_of_birth = 6;
+	string title = 7;
+	string status = 8;
+	string employment_type = 9;
+	google.protobuf.Timestamp date_of_joining = 10;
 }
 
 message GetEmployeeRequest {

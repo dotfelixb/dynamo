@@ -1,4 +1,6 @@
-﻿using Dynamo.Server.EmployeeServices;
+﻿using Dynamo.Features;
+using Dynamo.Server.EmployeeServices;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +16,11 @@ namespace Dynamo.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddMediatR(assemblies: new[]
+            {
+                typeof(Startup).Assembly,
+                typeof(DynamoFeatures).Assembly
+            });
             services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 

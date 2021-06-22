@@ -4,6 +4,7 @@ namespace Dynamo.Models.Employee
 {
    public class CreateEmployeeModel
     {
+        public string Code { get; set; }
         public string FirstName { get; set; }
         public string MIddleName { get; set; }
         public string LastName { get; set; }

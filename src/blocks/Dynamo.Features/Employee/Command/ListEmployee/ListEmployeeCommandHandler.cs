@@ -1,7 +1,7 @@
 using FluentResults;
 using MediatR;
 
-namespace Dynamo.Features.Employee.ListEmployee
+namespace Dynamo.Features.Employee.Command.ListEmployee
 {
 
     public class ListEmployeeCommand : 

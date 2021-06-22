@@ -1,8 +1,8 @@
 ﻿
 using AutoMapper;
 using Dynamo.Contracts;
-using Dynamo.Features.Employee.CreateEmployee;
-using Dynamo.Features.Employee.CreateEmployeeContact;
+using Dynamo.Features.Employee.Command.CreateEmployee;
+using Dynamo.Features.Employee.Command.CreateEmployeeContact;
 using Google.Protobuf.WellKnownTypes;
 
 namespace Dynamo.Features

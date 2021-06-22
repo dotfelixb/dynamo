@@ -8,19 +8,13 @@
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
-    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.4.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.4.3" />
-    <PackageReference Include="Microsoft.Orleans.EventSourcing" Version="3.4.3" />
-    <PackageReference Include="Microsoft.Orleans.Server" Version="3.4.3" />
-    <PackageReference Include="NewId" Version="3.0.3" />
-    <PackageReference Include="Orleans.Persistence.Redis" Version="3.1.1" /> 
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="NewId" Version="3.0.3" /> 
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\blocks\Dynamo.Contracts\Dynamo.Contracts.csproj" />
+    <ProjectReference Include="..\..\blocks\Dynamo.Features\Dynamo.Features.csproj" />
   </ItemGroup>
 
 </Project>

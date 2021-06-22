@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Dynamo.Contracts;
-using Dynamo.Models.EmployeeEventModel;
-using Dynamo.Server.GrainEvent;
+using Dynamo.Features.Employee.Event.CreateEmployee;
+using Dynamo.Features.Employee.Event.CreateEmployeeContact;
 
 namespace Dynamo.Server
 {
@@ -11,18 +11,16 @@ namespace Dynamo.Server
         {
             #region create employee mapping
 
-            CreateMap<CreateEmployeeRequest, CreateEmployeeEventModel>()
+            CreateMap<CreateEmployeeRequest, CreateEmployeeEvent>()
                 .ForMember(d => d.DateOfBirth, o => o.MapFrom(s => s.DateOfBirth.ToDateTimeOffset()))
                 .ForMember(d => d.DateOfJoining, o => o.MapFrom(s => s.DateOfJoining.ToDateTimeOffset()));
-            CreateMap<CreateEmployeeEventModel, CreateEmployeeEvent>();
 
             #endregion
 
 
             #region create employee contact mapping
 
-            CreateMap<CreateEmployeeContactRequest, CreateEmployeeContactEventModel>();
-            CreateMap<CreateEmployeeContactEventModel, CreateEmployeeContactEvent>();
+            CreateMap<CreateEmployeeContactRequest, CreateEmployeeContactEvent>();
 
             #endregion
         }

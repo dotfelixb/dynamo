@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Orleans.Configuration;
-using Orleans.Hosting;
-using Orleans;
 
 namespace Dynamo.Server
 {
@@ -17,24 +14,6 @@ namespace Dynamo.Server
         // visit https://go.microsoft.com/fwlink/?linkid=2099682
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseOrleans(silo =>
-            {
-                silo.UseLocalhostClustering()
-                .Configure<ClusterOptions>(clusterOptions =>
-                {
-                    clusterOptions.ServiceId = "DynamoOrleansSrv1";
-                    clusterOptions.ClusterId = "DynamoOrleansClstr";
-                })
-                .ConfigureApplicationParts(p => 
-                    p.AddApplicationPart(typeof(Startup).Assembly)
-                    .WithReferences())
-                .AddRedisGrainStorage("Redis", ob => ob.Configure(opt =>
-                {
-                    opt.ConnectionString = "localhost:6379"; // This is the deafult
-                    opt.UseJson = true;
-                    opt.DatabaseNumber = 0;
-                }));
-            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.ConfigureKestrel(options =>

@@ -1,14 +1,41 @@
 ﻿using AutoMapper;
 using Dynamo.Contracts;
+using Dynamo.Models.Employee;
 using FluentResults;
-using Google.Protobuf.WellKnownTypes;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Dynamo.Features.Employee.CreateEmployee
+namespace Dynamo.Features.Employee.Command.CreateEmployee
 {
+    public class CreateEmployeeCommand :
+        CreateEmployeeModel,
+        IRequest<Result<CreateEmployeeResult>>
+    { }
+
+    public class CreateEmployeeResult
+    {
+        public string Id { get; set; }
+    }
+
+    public class CreateEmployeeValidator : AbstractValidator<CreateEmployeeCommand>
+    {
+        public CreateEmployeeValidator()
+        {
+            RuleFor(r => r.FirstName).NotEmpty().MaximumLength(50);
+
+            RuleFor(r => r.LastName).NotEmpty().MaximumLength(50);
+
+            RuleFor(r => r.Gender).NotEmpty();
+
+            RuleFor(r => r.DateOfBirth)
+                .NotEqual(DateTimeOffset.MinValue)
+                .NotNull();
+        }
+    }
+
     internal class CreateEmployeeCommandHandler :
         IRequestHandler<CreateEmployeeCommand,
             Result<CreateEmployeeResult>>
