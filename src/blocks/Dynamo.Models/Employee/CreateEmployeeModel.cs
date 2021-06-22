@@ -15,4 +15,19 @@ namespace Dynamo.Models.Employee
         public string EmploymentType { get; set; } = "Full-time";
 
     }
+
+    public class CreateEmployeeContactModel
+    {
+        public string EmployeeId { get; set; }
+        public string Name { get; set; }
+        public string Mobile { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public string Address { get; set; } = "";
+        public string CompanyEmail { get; set; } = "";
+        public string PersonalEmail { get; set; } = "";
+        public string ContactType { get; set; } = "";
+        public string Relation { get; set; } = "";
+        public bool SendEmail { get; set; }
+        public bool SendSMS { get; set; }
+    }
 }

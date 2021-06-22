@@ -1,4 +1,5 @@
 ﻿using Dynamo.Features.Employee.CreateEmployee;
+using Dynamo.Features.Employee.CreateEmployeeContact;
 using Dynamo.Features.Employee.GetEmployee;
 using Dynamo.Features.Employee.ListEmployee;
 using MediatR;
@@ -55,6 +56,20 @@ namespace Dynamo.Browser.Controllers
             }
 
             return CreatedAtAction(nameof(GetEmployee), new { rst.Value.Id }, rst);
+        }
+
+        [HttpPost("employee.contact.create", Name =nameof(CreateEmployeeContact))]
+        public async Task<IActionResult> CreateEmployeeContact([FromQuery] string employeeId , [FromBody] CreateEmployeeContactCommand command)
+        {
+            command.EmployeeId = employeeId;
+            var rst = await _mediator.Send(command);
+
+            if (rst.IsFailed)
+            {
+                return BadRequest(rst);
+            }
+
+            return CreatedAtAction(nameof(GetEmployee), new { Id = rst.Value.EmployeeId }, rst);
         }
     }
 }

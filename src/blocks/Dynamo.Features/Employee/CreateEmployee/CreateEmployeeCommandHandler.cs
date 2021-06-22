@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dynamo.Contracts;
 using FluentResults;
 using Google.Protobuf.WellKnownTypes;
 using MediatR;
@@ -29,7 +30,8 @@ namespace Dynamo.Features.Employee.CreateEmployee
         {
             try
             {
-                var createable = _mapper.Map<CreateEmployeeCommand, Contracts.CreateEmployeeRequest>(request);
+                var createable = _mapper
+                    .Map<CreateEmployeeCommand, CreateEmployeeRequest>(request);
 
                 var rst = await _client.CreateEmployeeAsync(
                     createable, 

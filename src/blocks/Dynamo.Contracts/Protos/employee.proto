@@ -45,6 +45,11 @@ message EmployeeCreatedReply {
 	string employee_id = 1;
 }
 
+message EmployeeContactCreatedReply {
+	string employee_id = 1;
+	string contact_id = 2;
+}
+
 message EmployeeReply {
 	string id = 1;
 	string first_name = 2;
@@ -58,7 +63,7 @@ message EmployeeReply {
 	google.protobuf.Timestamp date_of_joining = 10;
 }
 
-message EmployeeContactCreatedReply {
+message EmployeeContactReply {
 	string id = 1;
 	string name = 2;
 	string mobile = 3;
