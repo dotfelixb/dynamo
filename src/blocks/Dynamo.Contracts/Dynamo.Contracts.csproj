@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Grains\**" />
+    <EmbeddedResource Remove="Grains\**" />
+    <None Remove="Grains\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Protos\employee.proto" />
   </ItemGroup>
 
@@ -15,6 +21,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dynamo.Models\Dynamo.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

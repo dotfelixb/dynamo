@@ -6,7 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
-    <PackageReference Include="NewId" Version="3.0.3" /> 
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.4.3" />
+    <PackageReference Include="Microsoft.Orleans.EventSourcing" Version="3.4.3" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="3.4.3" />
+    <PackageReference Include="NewId" Version="3.0.3" />
+    <PackageReference Include="Orleans.Persistence.Redis" Version="3.1.1" /> 
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-using Dynamo.Browser.Crosscutting.Validation;
+using Dynamo.Browser.Crosscutting.Validation; 
 using Dynamo.Features;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -47,6 +47,7 @@ namespace Dynamo.Browser
                 typeof(DynamoFeatures).Assembly
             });
             services.AddValidatorsFromAssembly(typeof(DynamoFeatures).Assembly);
+            services.AddAutoMapper(typeof(DynamoFeatures));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

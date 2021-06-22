@@ -25,7 +25,7 @@ namespace Dynamo.Features.Employee.GetEmployee
             {
                 var getable = new Contracts.GetEmployeeRequest
                 {
-                    Id = request.Id
+                    EmployeeId = request.Id
                 };
 
                 var rst = await _client

@@ -13,7 +13,9 @@ namespace Dynamo.Features.Employee.CreateEmployee
 
             RuleFor(r => r.Gender).NotEmpty();
 
-            RuleFor(r => r.DateOfBirth).NotEqual(DateTimeOffset.MinValue);
+            RuleFor(r => r.DateOfBirth)
+                .NotEqual(DateTimeOffset.MinValue)
+                .NotNull();
         }
     }
 }

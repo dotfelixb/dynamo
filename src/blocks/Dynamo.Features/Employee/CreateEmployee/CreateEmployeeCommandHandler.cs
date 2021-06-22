@@ -1,4 +1,6 @@
-﻿using FluentResults;
+﻿using AutoMapper;
+using FluentResults;
+using Google.Protobuf.WellKnownTypes;
 using MediatR;
 using System;
 using System.Threading;
@@ -10,11 +12,15 @@ namespace Dynamo.Features.Employee.CreateEmployee
         IRequestHandler<CreateEmployeeCommand,
             Result<CreateEmployeeResult>>
     {
-        private readonly Contracts.Employee.EmployeeClient _client;
+        private readonly Contracts.Employee.EmployeeClient _client; 
+        private readonly IMapper _mapper;
 
-        public CreateEmployeeCommandHandler(Contracts.Employee.EmployeeClient client)
+        public CreateEmployeeCommandHandler(
+            Contracts.Employee.EmployeeClient client, 
+            IMapper mapper)
         {
             _client = client;
+            _mapper = mapper;
         }
 
         public async Task<Result<CreateEmployeeResult>> Handle(
@@ -23,16 +29,15 @@ namespace Dynamo.Features.Employee.CreateEmployee
         {
             try
             {
-                var createable = new Contracts.CreateEmployeeRequest
-                {
-                    FirstName = request.FirstName
-                };
-                var rst = await _client
-                        .CreateEmployeeAsync(createable, cancellationToken: cancellationToken);
+                var createable = _mapper.Map<CreateEmployeeCommand, Contracts.CreateEmployeeRequest>(request);
+
+                var rst = await _client.CreateEmployeeAsync(
+                    createable, 
+                    cancellationToken: cancellationToken);
 
                 var createdEmployee = new CreateEmployeeResult
                 {
-                    Id = rst.Id
+                    Id = rst.EmployeeId
                 };
 
                 return Result.Ok(createdEmployee);

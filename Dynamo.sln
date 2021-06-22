@@ -21,11 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamo.Server", "src\servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Contracts", "Dynamo.Contracts", "{252E8B08-4037-4E3B-8BBF-92D3D3A2756B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Contracts", "src\blocks\Dynamo.Contracts\Dynamo.Contracts.csproj", "{3A963D64-D57A-4EAE-B276-BFC4086FBE61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamo.Contracts", "src\blocks\Dynamo.Contracts\Dynamo.Contracts.csproj", "{3A963D64-D57A-4EAE-B276-BFC4086FBE61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Features", "Dynamo.Features", "{04734FA6-8447-4700-A3B1-C8BE8A483547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Features", "src\blocks\Dynamo.Features\Dynamo.Features.csproj", "{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamo.Features", "src\blocks\Dynamo.Features\Dynamo.Features.csproj", "{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo.Models", "Dynamo.Models", "{896B6BF9-1CF3-48B0-8736-692EE76F3857}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamo.Models", "src\blocks\Dynamo.Models\Dynamo.Models.csproj", "{FDC027EE-2B18-4C7C-A097-9E87D375E118}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC027EE-2B18-4C7C-A097-9E87D375E118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC027EE-2B18-4C7C-A097-9E87D375E118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC027EE-2B18-4C7C-A097-9E87D375E118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC027EE-2B18-4C7C-A097-9E87D375E118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +73,8 @@ Global
 		{3A963D64-D57A-4EAE-B276-BFC4086FBE61} = {252E8B08-4037-4E3B-8BBF-92D3D3A2756B}
 		{04734FA6-8447-4700-A3B1-C8BE8A483547} = {1353A3E4-4349-4E63-93B1-A5BF1CED1F37}
 		{AA8CE5CF-98C5-4912-AC0C-1657DCA8558B} = {04734FA6-8447-4700-A3B1-C8BE8A483547}
+		{896B6BF9-1CF3-48B0-8736-692EE76F3857} = {1353A3E4-4349-4E63-93B1-A5BF1CED1F37}
+		{FDC027EE-2B18-4C7C-A097-9E87D375E118} = {896B6BF9-1CF3-48B0-8736-692EE76F3857}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D49C7175-2BD4-42DF-89E2-3115BFF89D54}
